@@ -54,7 +54,7 @@ class QiitaProvider extends AbstractProvider implements ProviderInterface
      *
      * @return array
      */
-    public function getAccessToken($code)
+    public function getAccessTokenResponse($code)
     {
         $response = $this->getHttpClient()->post($this->getTokenUrl(), [
             'headers' => [
