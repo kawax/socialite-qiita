@@ -13,7 +13,7 @@ class QiitaServiceProvider extends SocialiteServiceProvider
      *
      * @var bool
      */
-    protected $defer = true;
+    protected $defer = false;
 
     /**
      * Bootstrap the service provider.
