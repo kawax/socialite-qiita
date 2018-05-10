@@ -63,7 +63,9 @@ class QiitaProvider extends AbstractProvider implements ProviderInterface
             'json'    => $this->getTokenFields($code),
         ]);
 
-        return json_decode($response->getBody(), true)['token'];
+        return [
+            'access_token' => json_decode($response->getBody(), true)['token'],
+        ];
     }
 
     /**
