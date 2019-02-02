@@ -5,6 +5,7 @@ namespace Revolution\Socialite\Qiita;
 use Laravel\Socialite\Two\AbstractProvider;
 use Laravel\Socialite\Two\ProviderInterface;
 use Laravel\Socialite\Two\User;
+use Illuminate\Support\Arr;
 
 class QiitaProvider extends AbstractProvider implements ProviderInterface
 {
@@ -89,11 +90,11 @@ class QiitaProvider extends AbstractProvider implements ProviderInterface
     protected function mapUserToObject(array $user)
     {
         return (new User())->setRaw($user)->map([
-            'id'       => $user['permanent_id'],
-            'nickname' => $user['name'],
-            'name'     => $user['id'],
+            'id'       => (int)Arr::get($user, 'permanent_id'),
+            'nickname' => Arr::get($user, 'name', ''),
+            'name'     => Arr::get($user, 'id', ''),
             'email'    => '',
-            'avatar'   => $user['profile_image_url'],
+            'avatar'   => Arr::get($user, 'profile_image_url', ''),
         ]);
     }
 }
