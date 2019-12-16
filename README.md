@@ -2,6 +2,9 @@
 
 https://qiita.com/api/v2/docs
 
+## Requirements
+- PHP >= 7.2
+
 ## Installation
 ```
 composer require revolution/socialite-qiita

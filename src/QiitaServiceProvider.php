@@ -2,10 +2,10 @@
 
 namespace Revolution\Socialite\Qiita;
 
-use Laravel\Socialite\SocialiteServiceProvider;
+use Illuminate\Support\ServiceProvider;
 use Laravel\Socialite\Facades\Socialite;
 
-class QiitaServiceProvider extends SocialiteServiceProvider
+class QiitaServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the service provider.
@@ -14,10 +14,13 @@ class QiitaServiceProvider extends SocialiteServiceProvider
      */
     public function boot()
     {
-        Socialite::extend('qiita', function ($app) {
-            $config = $app['config']['services.qiita'];
+        Socialite::extend(
+            'qiita',
+            function ($app) {
+                $config = $app['config']['services.qiita'];
 
-            return Socialite::buildProvider(QiitaProvider::class, $config);
-        });
+                return Socialite::buildProvider(QiitaProvider::class, $config);
+            }
+        );
     }
 }
