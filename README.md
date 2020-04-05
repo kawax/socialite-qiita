@@ -67,7 +67,7 @@ https://qiita.com/api/v2/docs#%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%97
     public function login()
     {
         return Socialite::driver('qiita')
-                        ->setScopes(['read_qiita', 'write_qiita'])
+                        ->scopes(['read_qiita_team', 'write_qiita_team'])
                         ->redirect();
     }
 ```

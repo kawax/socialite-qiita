@@ -16,6 +16,7 @@ class QiitaProvider extends AbstractProvider implements ProviderInterface
      */
     protected $scopes = [
         'read_qiita',
+        'write_qiita',
     ];
 
     /**
