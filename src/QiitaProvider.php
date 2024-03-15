@@ -2,10 +2,10 @@
 
 namespace Revolution\Socialite\Qiita;
 
+use Illuminate\Support\Arr;
 use Laravel\Socialite\Two\AbstractProvider;
 use Laravel\Socialite\Two\ProviderInterface;
 use Laravel\Socialite\Two\User;
-use Illuminate\Support\Arr;
 
 class QiitaProvider extends AbstractProvider implements ProviderInterface
 {
@@ -53,7 +53,6 @@ class QiitaProvider extends AbstractProvider implements ProviderInterface
      * Get the access token response for the given code.
      *
      * @param  string  $code
-     *
      * @return array
      */
     public function getAccessTokenResponse($code)
