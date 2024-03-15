@@ -36,7 +36,7 @@ class QiitaProvider extends AbstractProvider implements ProviderInterface
      */
     protected function getAuthUrl($state)
     {
-        $url = $this->endpoint . 'oauth/authorize';
+        $url = $this->endpoint.'oauth/authorize';
 
         return $this->buildAuthUrlFromBase($url, $state);
     }
@@ -46,13 +46,13 @@ class QiitaProvider extends AbstractProvider implements ProviderInterface
      */
     protected function getTokenUrl()
     {
-        return $this->endpoint . 'access_tokens';
+        return $this->endpoint.'access_tokens';
     }
 
     /**
      * Get the access token response for the given code.
      *
-     * @param  string $code
+     * @param  string  $code
      *
      * @return array
      */
@@ -62,7 +62,7 @@ class QiitaProvider extends AbstractProvider implements ProviderInterface
             'headers' => [
                 'Accept' => 'application/json',
             ],
-            'json'    => $this->getTokenFields($code),
+            'json' => $this->getTokenFields($code),
         ]);
 
         return [
@@ -76,11 +76,11 @@ class QiitaProvider extends AbstractProvider implements ProviderInterface
     protected function getUserByToken($token)
     {
         $response = $this->getHttpClient()
-                         ->get($this->endpoint . 'authenticated_user', [
-                             'headers' => [
-                                 'Authorization' => 'Bearer ' . $token,
-                             ],
-                         ]);
+            ->get($this->endpoint.'authenticated_user', [
+                'headers' => [
+                    'Authorization' => 'Bearer '.$token,
+                ],
+            ]);
 
         return json_decode($response->getBody(), true);
     }
@@ -91,11 +91,11 @@ class QiitaProvider extends AbstractProvider implements ProviderInterface
     protected function mapUserToObject(array $user)
     {
         return (new User())->setRaw($user)->map([
-            'id'       => (int)Arr::get($user, 'permanent_id'),
+            'id' => (int) Arr::get($user, 'permanent_id'),
             'nickname' => Arr::get($user, 'name', ''),
-            'name'     => Arr::get($user, 'id', ''),
-            'email'    => '',
-            'avatar'   => Arr::get($user, 'profile_image_url', ''),
+            'name' => Arr::get($user, 'id', ''),
+            'email' => '',
+            'avatar' => Arr::get($user, 'profile_image_url', ''),
         ]);
     }
 }

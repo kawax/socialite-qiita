@@ -14,13 +14,10 @@ class QiitaServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Socialite::extend(
-            'qiita',
-            function ($app) {
-                $config = $app['config']['services.qiita'];
+        Socialite::extend('qiita', function ($app) {
+            $config = $app['config']['services.qiita'];
 
-                return Socialite::buildProvider(QiitaProvider::class, $config);
-            }
-        );
+            return Socialite::buildProvider(QiitaProvider::class, $config);
+        });
     }
 }

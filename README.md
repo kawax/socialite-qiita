@@ -3,7 +3,9 @@
 https://qiita.com/api/v2/docs
 
 ## Requirements
-- PHP >= 7.2
+- PHP >= 8.0
+
+> No version restrictions. It may stop working in future versions.
 
 ## Installation
 ```
@@ -12,7 +14,7 @@ composer require revolution/socialite-qiita
 
 ### config/services.php
 
-```
+```php
     'qiita' => [
         'client_id'     => env('QIITA_CLIENT_ID'),
         'client_secret' => env('QIITA_CLIENT_SECRET'),
@@ -30,9 +32,9 @@ QIITA_REDIRECT=
 ## Usage
 
 routes/web.php
-```
-Route::get('login', 'SocialiteController@login');
-Route::get('callback', 'SocialiteController@callback');
+```php
+Route::get('login', [SocialiteController::class, 'login']);
+Route::get('callback', [SocialiteController::class, 'callback']);
 ```
 
 SocialiteController
